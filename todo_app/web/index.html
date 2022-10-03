@@ -57,9 +57,6 @@
   </picture>
 
   <script>
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
-    import { auth } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js';
-    import { firestore } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js'; 
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
@@ -73,19 +70,6 @@
       });
     });
 
-    const firebaseConfig = {
-      apiKey: 'AIzaSyDabFE5CRBuExjMKQuUvxqd3sseIPDU5iw',
-      appId: '1:476955649131:web:56cc190883cffa39b17d2e',
-      messagingSenderId: '476955649131',
-      projectId: 'todo-app-159d0',
-      authDomain: 'todo-app-159d0.firebaseapp.com',
-      storageBucket: 'todo-app-159d0.appspot.com',
-      measurementId: 'G-MKWPXDX02K',
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
   </script>
 </body>
 

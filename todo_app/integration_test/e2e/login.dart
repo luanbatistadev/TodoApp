@@ -14,7 +14,7 @@ void main() {
       testWidgets(
         'should display a login page',
         (tester) async {
-          app.main();
+          await app.main();
 
           await loginIntoTheApp(tester);          
         },

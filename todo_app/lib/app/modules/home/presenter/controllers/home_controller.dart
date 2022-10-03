@@ -90,14 +90,24 @@ class HomeController {
     }
   }
 
-  void deleteCompletedTaskItem(TaskEntity task) {
+   void deleteCompletedTaskItem(TaskEntity task) {
+    _deleteCompletedTaskItemSync(task);
     _deleteCompletedTaskItemAsync(task);
   }
 
-  Future<void> _deleteCompletedTaskItemAsync(TaskEntity task) async {
+  void _deleteCompletedTaskItemSync(TaskEntity task) {
     if (!kIsWeb) {
       _localNotificationService.deleteNotification(task.id);
     }
+    final completedTask = taskStore.state.completedTasks..removeWhere((t) => t.id == task.id);
+    taskStore.updateList(
+      taskStore.state.copyWith(
+        completedTasks: completedTask,
+      ),
+    );
+  }
+
+  Future<void> _deleteCompletedTaskItemAsync(TaskEntity task) async {
     final result = await _deleteTaskUsecase(
       DeleteTaskDTO(
         id: task.id,
@@ -109,13 +119,23 @@ class HomeController {
   }
 
   void deleteAnTaskItem(TaskEntity task) {
+    _deleteAnTaskItemSync(task);
     _deleteAnTaskItemAsync(task);
   }
 
-  Future<void> _deleteAnTaskItemAsync(TaskEntity task) async {
+  Future<void> _deleteAnTaskItemSync(TaskEntity task) async {
     if (!kIsWeb) {
       _localNotificationService.deleteNotification(task.id);
     }
+    final tasks = taskStore.state.tasks..removeWhere((e) => e.id == task.id);
+    taskStore.updateList(
+      taskStore.state.copyWith(
+        tasks: tasks,
+      ),
+    );
+  }
+
+  Future<void> _deleteAnTaskItemAsync(TaskEntity task) async {
     final result = await _deleteTaskUsecase(DeleteTaskDTO(id: task.id));
     if (result.isLeft()) {
       result.fold((l) => _overlayService.showErrorSnackBar(l.message), id);

@@ -23,8 +23,8 @@ class LoginWithEmailDatasourceImpl implements ILoginDatasource {
       );
     } on IAppException {
       rethrow;
-    } catch (e, s) {
-      throw DatasourceException(message: e.toString(), stackTrace: s);
+    } on FirebaseAuthException catch (e, s) {
+      throw DatasourceException(message: e.message??'', stackTrace: s);
     }
   }
 }

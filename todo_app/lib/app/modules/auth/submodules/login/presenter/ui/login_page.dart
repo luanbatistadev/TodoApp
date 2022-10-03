@@ -40,20 +40,21 @@ class _LoginPageState extends State<LoginPage> {
               TADSCustomTextField(
                 label: AppLocalizations.of(context)!.emailField,
                 prefixIcon: IconlyLight.message,
-                onChanged: (value) => widget.controller.email = value,
+                onChanged: (value) => widget.controller.email = value.trim(),
                 validate: (_) => widget.controller.emailInstance
                     .hasError(AppLocalizations.of(context)!.emailError),
               ),
               TADSCustomTextField(
                 label: AppLocalizations.of(context)!.passwordField,
                 prefixIcon: IconlyLight.lock,
-                onChanged: (value) => widget.controller.password = value,
+                onChanged: (value) => widget.controller.password = value.trim(),
                 validate: (_) => widget.controller.passwordInstance
                     .hasError(AppLocalizations.of(context)!.passwordError),
                 isPassword: true,
               ),
               SizedBox(height: size.height * 0.12),
               Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   TripleBuilder<AuthStore, IAppException, AuthState>(
                     store: widget.controller.authStore,
@@ -74,20 +75,20 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     },
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Flexible(
-                    child: TextButton(
-                      onPressed: () =>
-                          Modular.to.pushReplacementNamed(AppRoutes.toForgot),
-                      child: Text(
-                        'Esqueceu a senha?',
-                        style: Theme.of(context).textTheme.headline5,
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: TextButton(
+                          onPressed: () => Modular.to
+                              .pushReplacementNamed(AppRoutes.toForgot),
+                          child: Text(
+                            AppLocalizations.of(context)!.forgotPass,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),

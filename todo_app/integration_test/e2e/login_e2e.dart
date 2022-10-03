@@ -17,7 +17,7 @@ void main() {
       testWidgets(
         'should login an user on login page and interact with the app',
         (tester) async {
-          app.main();
+          await app.main();
           await loginIntoTheApp(tester);
 
           await addTaskIntoTheApp(tester);

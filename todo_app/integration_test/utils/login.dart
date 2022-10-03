@@ -27,6 +27,7 @@ Future<void> loginIntoTheApp(
       find.byType(SingleChildScrollView),
       const Offset(0, 200),
     );
+    await tester.testTextInput.receiveAction(TextInputAction.done);
 
     await tester.pumpAndSettle(const Duration(seconds: 1));
 

@@ -40,19 +40,19 @@ class _RegisterPageState extends State<RegisterPage> {
                   TADSCustomTextField(
                     label: AppLocalizations.of(context)!.nameField,
                     prefixIcon: IconlyLight.profile,
-                    onChanged: (value) => widget.controller.name = value,
+                    onChanged: (value) => widget.controller.name = value.trim(),
                     validate: (_) => widget.controller.nameInstance.hasError(AppLocalizations.of(context)!.nameError),
                   ),
                   TADSCustomTextField(
                     label: AppLocalizations.of(context)!.emailField,
                     prefixIcon: IconlyLight.message,
-                    onChanged: (value) => widget.controller.email = value,
+                    onChanged: (value) => widget.controller.email = value.trim(),
                     validate: (_) => widget.controller.emailInstance.hasError(AppLocalizations.of(context)!.emailError),
                   ),
                   TADSCustomTextField(
                     label: AppLocalizations.of(context)!.passwordField,
                     prefixIcon: IconlyLight.lock,
-                    onChanged: (value) => widget.controller.password = value,
+                    onChanged: (value) => widget.controller.password = value.trim(),
                     validate: (_) =>
                         widget.controller.passwordInstance.hasError(AppLocalizations.of(context)!.passwordError),
                     isPassword: true,
@@ -60,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   TADSCustomTextField(
                     label: AppLocalizations.of(context)!.confirmPasswordField,
                     prefixIcon: IconlyLight.lock,
-                    onChanged: (value) => widget.controller.confirmPassword = value,
+                    onChanged: (value) => widget.controller.confirmPassword = value.trim(),
                     validate: (_) => widget.controller.confirmPasswordInstance.hasError(
                       AppLocalizations.of(context)!.confirmPasswordError,
                     ),

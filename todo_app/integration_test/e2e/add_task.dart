@@ -15,7 +15,7 @@ void main() {
       testWidgets(
         'should create a task on add task page',
         (tester) async {
-          app.main();
+          await app.main();
           await loginIntoTheApp(tester);
           await addTaskIntoTheApp(tester);
         },

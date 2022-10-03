@@ -1,6 +1,6 @@
 name: Flutter CI for release
 
-on: [pull_request]
+on: [push]
 
 defaults:
  run:

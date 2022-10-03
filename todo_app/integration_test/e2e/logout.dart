@@ -15,7 +15,7 @@ void main() {
       testWidgets(
         'should logout on app',
         (tester) async {
-          app.main();
+          await app.main();
 
           await loginIntoTheApp(tester);
           await logoutOfTheApp(tester);

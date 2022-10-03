@@ -13,7 +13,7 @@ void main() {
       testWidgets(
         'should create an user on register page',
         (tester) async {
-          app.main();
+          await app.main();
           await registerIntoTheApp(tester);
         },
       );

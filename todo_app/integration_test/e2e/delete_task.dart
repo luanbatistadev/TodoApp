@@ -15,7 +15,7 @@ void main() {
       testWidgets(
         'should delete a task HomePage',
         (tester) async {
-          app.main();
+          await app.main();
           await loginIntoTheApp(tester);
           await deleteTaskIntoTheApp(tester);
         },

@@ -15,7 +15,7 @@ void main() {
       testWidgets(
         'should verify if HomePage is displayed',
         (tester) async {
-          app.main();
+          await app.main();
           await loginIntoTheApp(tester);
           await verifyHomeIntoTheApp(tester);
         },
